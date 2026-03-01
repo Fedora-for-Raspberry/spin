@@ -1,0 +1,11 @@
+#!/bin/bash
+mkdir -p ffr-brcmfmac/rpm
+mkdir -p ffr-brcmfmac/root/{sbin,usr/lib/systemd/system}
+cd sources
+for script in $(ls *.sh); do
+	cp $script ../ffr-brcmfmac/root/sbin/$(basename $script .sh)
+	chmod +x ../ffr-brcmfmac/root/sbin/$(basename $script .sh)
+done
+for unit in $(ls *.service); do
+	cp $unit ../ffr-brcmfmac/root/usr/lib/systemd/system/
+done

@@ -1,0 +1,4 @@
+mklabel msdos
+unit MB
+mkpart primary fat32 1MB 513MB
+mkpart primary ext4 514MB 100%

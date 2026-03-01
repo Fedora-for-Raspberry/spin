@@ -1,0 +1,4 @@
+#!/bin/bash
+cd rootfs_fedora
+mksquashfs . ../fedora.sfs
+cd ..

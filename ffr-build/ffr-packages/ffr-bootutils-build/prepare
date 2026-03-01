@@ -1,0 +1,15 @@
+#!/bin/bash
+mkdir ffr-bootutils
+cp ../specs/ffr-bootutils.spec ffr-bootutils
+mkdir scripts
+mkdir sources
+
+# genfstab.ffr
+dnf download arch-install-scripts
+cd sources
+rpm2cpio ../*.rpm | cpio -nvidm
+cp usr/bin/genfstab genfstab
+rm -fr usr
+cd -
+rm -fr *.rpm
+echo utils_$(date +%Y%m%d%H%M) > package-version

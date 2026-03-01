@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir -p ffr-nonfree-firmware/root/boot
+cp -r videocore-firmware/* ffr-nonfree-firmware/root/boot/

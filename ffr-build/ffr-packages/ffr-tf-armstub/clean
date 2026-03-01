@@ -1,0 +1,5 @@
+#!/bin/sh
+rm -fr ffr-tf-armstub
+rm -fr arm-trusted-firmware
+rm -fr rpms
+rm -fr *-version

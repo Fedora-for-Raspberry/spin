@@ -1,0 +1,31 @@
+#!/bin/bash
+rm -fr ~/rpmbuild
+rm -fr rpms
+mkdir rpms
+rpmdev-setuptree
+VERSION="$(cat package-version)"
+TARGETS="ffr-config"
+for target in $TARGETS; do
+	echo "$target - creating spec file"
+	rm -fr "$target/rpm"
+	mkdir "$target/rpm"
+	cat "$target/$target.spec" | sed "s/VERSIONSTRING/$VERSION/g" > ~/rpmbuild/SPECS/$target.spec
+	mkdir -p "$target/rpm/$target-$VERSION"
+	cp -r "$target"/root/* "$target/rpm/$target-$VERSION"
+	cd "$target/rpm"
+	pwd
+	tar cvf "$target-$VERSION.tar.gz" "$target-$VERSION"
+	cd -
+	cp "$target/rpm/$target-$VERSION.tar.gz" ~/rpmbuild/SOURCES/
+done
+cd ~/rpmbuild
+rpmlint SPECS/*.spec && rpmbuild -bb SPECS/*.spec
+cd -
+rm -fr rpms
+mkdir rpms
+for target in $TARGETS; do
+	cp ~/rpmbuild/RPMS/aarch64/$target-$VERSION-1.aarch64.rpm $target
+	cp $target/$target-$VERSION-1.aarch64.rpm rpms
+done
+rm -fr ~/rpmbuild
+echo "done!"

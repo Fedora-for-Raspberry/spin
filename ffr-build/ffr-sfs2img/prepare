@@ -1,0 +1,2 @@
+#!/bin/bash
+cp ../ffr-fedora-root/artifacts/*.sfs .

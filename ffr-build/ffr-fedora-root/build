@@ -1,0 +1,7 @@
+#!/bin/bash
+cd ffr-image-create
+./get_image
+cd ..
+./temp_clean
+mkdir -p artifacts
+cp ffr-image-create/*.sfs artifacts

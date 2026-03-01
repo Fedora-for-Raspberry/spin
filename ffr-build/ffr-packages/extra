@@ -1,0 +1,8 @@
+#!/bin/sh
+source ./include.sh
+for target in $TARGETS; do
+	cd $target
+	./rpmbuild
+	cp -r rpms/*.rpm ../rpms/
+	cd ..
+done

@@ -1,0 +1,4 @@
+#!/bin/bash
+mkdir -p ffr-brcmfmac/{root,rpm}
+cp ../specs/ffr-brcmfmac.spec ffr-brcmfmac
+echo brcmfmac_$(date +%Y%m%d%H%M) > package-version

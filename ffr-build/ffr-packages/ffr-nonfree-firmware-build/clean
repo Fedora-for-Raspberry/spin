@@ -1,0 +1,5 @@
+#!/bin/sh
+rm -fr ffr-nonfree-firmware
+rm -fr videocore-firmware
+rm -fr rpms
+rm -fr *-version

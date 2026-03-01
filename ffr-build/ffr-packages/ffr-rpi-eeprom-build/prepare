@@ -1,0 +1,5 @@
+#!/bin/bash
+git clone --single-branch --depth 1 https://github.com/raspberrypi/rpi-eeprom
+mkdir -p ffr-rpi-eeprom/{root,rpm}
+cp ../specs/ffr-rpi-eeprom.spec ./ffr-rpi-eeprom/
+echo rpieeprom_$(date +%Y%m%d%H%M) > package-version

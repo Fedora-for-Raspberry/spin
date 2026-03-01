@@ -1,0 +1,13 @@
+#!/bin/bash
+LATEST="$(git ls-remote https://github.com/raspberrypi/linux | grep -oE "rpi-[0-9].*?[.][0-9].*?[.]y" | sort -rV | head -n2 | tail -n1)"
+git clone --depth 1 --single-branch --branch "$LATEST" https://github.com/raspberrypi/linux "linux-$LATEST"
+rm -fr "linux-$LATEST/.git" "linux-$LATEST/.github" "linux-$LATEST/.gitignore" "linux-$LATEST/.gitattributes"
+tar czvf "linux.tar.gz" "linux-$LATEST"
+echo "linux-$LATEST" > kernel-version
+echo linux_$(date +%Y%m%d%H%M) > package-version
+mkdir rpms
+mkdir -p ffr-kernel{,-devicetree,-headers,-modules,-overlays,-source}/{root,rpm}
+TARGETS="ffr-kernel ffr-kernel-devicetree ffr-kernel-headers ffr-kernel-modules ffr-kernel-overlays ffr-kernel-source"
+for target in $TARGETS; do
+	cp ../specs/$target.spec $target
+done

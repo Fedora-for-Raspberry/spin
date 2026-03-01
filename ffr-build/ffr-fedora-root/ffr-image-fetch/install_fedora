@@ -1,0 +1,5 @@
+#!/bin/bash
+./latest_fedora > fedora_release
+DNF5="dnf --installroot=$PWD/rootfs_fedora --releasever=$(./latest_fedora) --use-host-config --setopt=install_weak_deps=1 -y"
+yes | $DNF5 group install core standard workstation-product-environment
+

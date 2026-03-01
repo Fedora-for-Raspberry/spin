@@ -1,0 +1,2 @@
+#!/bin/bash
+rm -fr ffr-image-fetch/rootfs_fedora ffr-image-fetch/fedora.sfs ffr-image-create/fedora ffr-image-fetch/fedora_release ffr-image-create/fedora.sfs

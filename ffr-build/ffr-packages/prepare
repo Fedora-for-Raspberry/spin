@@ -1,0 +1,8 @@
+#!/bin/sh
+mkdir rpms
+source ./include.sh
+for target in $TARGETS; do
+	cd $target
+	./prepare
+	cd ..
+done

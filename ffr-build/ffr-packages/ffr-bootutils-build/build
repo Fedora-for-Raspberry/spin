@@ -1,0 +1,17 @@
+#!/bin/bash
+mkdir -p ffr-bootutils/rpm
+mkdir -p ffr-bootutils/root/{sbin,usr/lib/systemd/system,etc/dracut.conf.d}
+cat sources/genfstab | sed "s/[[]fuse[]][=]1/[fuse]=1\n\t\t\t   [fuse.portal]=1\n/g" > sources/ffr-genfstab.sh
+chmod +x sources/ffr-genfstab.sh
+rm -fr sources/genfstab
+cd sources
+for script in $(ls *.sh); do
+	cp $script ../ffr-bootutils/root/sbin/$(basename $script .sh)
+	chmod +x ../ffr-bootutils/root/sbin/$(basename $script .sh)
+done
+for unit in $(ls *.service); do
+	cp $unit ../ffr-bootutils/root/usr/lib/systemd/system/
+done
+for conf in $(ls *.dracut.conf); do
+        cp $conf ../ffr-bootutils/root/etc/dracut.conf.d/$(basename $conf .dracut.conf).conf
+done

@@ -1,0 +1,5 @@
+#!/bin/bash
+mkdir -p ffr-config/{root,rpm}
+cp ../specs/ffr-config.spec ffr-config
+echo config_$(date +%Y%m%d%H%M) > package-version
+

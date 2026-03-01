@@ -1,0 +1,29 @@
+#!/bin/bash
+cd $(cat kernel-version)
+KERNEL=kernel8
+make bcm2711_defconfig
+echo CONFIG_PROC_KCORE=y >> .config
+echo CONFIG_KEXEC_FILE=y >> .config
+echo CONFIG_KEXEC_CORE=y >> .config
+echo CONFIG_KEXEC=y >> .config
+echo CONFIG_KEXEC_HANDOVER=y >> .config
+yes | make oldconfig
+make -j8 dtbs
+make -j8 Image.gz
+make -j8 modules
+make -j8 Image.gz modules dtbs
+cd -
+mkdir -p ffr-kernel/root/boot
+cp $(cat kernel-version)/arch/arm64/boot/Image.gz ffr-kernel/root/boot/kernel8.img
+mkdir -p ffr-kernel-source/root/usr/src	
+cp linux.tar.gz ffr-kernel-source/root/usr/src/
+mkdir -p ffr-kernel-devicetree/root/boot/
+cp $(cat kernel-version)/arch/arm64/boot/dts/broadcom/*.dtb ffr-kernel-devicetree/root/boot/
+mkdir -p ffr-kernel-overlays/root/boot/overlays
+cp $(cat kernel-version)/arch/arm64/boot/dts/overlays/*.dtb* ffr-kernel-overlays/root/boot/overlays/
+mkdir -p ffr-kernel-modules/root/lib
+make -C $(cat kernel-version) modules_install INSTALL_MOD_PATH="$PWD/ffr-kernel-modules/root/"
+mkdir -p ffr-kernel-headers/root/usr/include
+make -C $(cat kernel-version) headers_install INSTALL_HDR_PATH="$PWD/ffr-kernel-headers/root/usr/"
+rm -fr ffr-kernel-modules/root/lib/modules/*/build
+cp $(cat kernel-version)/.config ffr-kernel/root/boot/kernel8.img-config

@@ -1,0 +1,8 @@
+#!/bin/bash
+mkdir -p ffr-tf-armstub/{rpm,root/boot}
+cd arm-trusted-firmware
+CROSS_COMPILE=aarch64-linux-gnu- make PLAT=rpi4
+CROSS_COMPILE=aarch64-linux-gnu- make PLAT=rpi5
+cp build/rpi5/release/bl31.bin ../ffr-tf-armstub/root/boot/armstub8-2712.bin
+cp build/rpi4/release/bl31.bin ../ffr-tf-armstub/root/boot/armstub8.bin
+

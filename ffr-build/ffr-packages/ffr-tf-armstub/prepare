@@ -1,0 +1,9 @@
+#!/bin/bash
+git clone https://github.com/ARM-software/arm-trusted-firmware
+mkdir -p ffr-tf-armstub/{root,rpm}
+cp ../specs/ffr-tf-armstub.spec ./ffr-tf-armstub/
+cd arm-trusted-firmware
+git checkout $(git tag -l | sort -rV | head -n1)
+rm -fr .git*
+cd ..
+echo armstub_$(date +%Y%m%d%H%M) > package-version

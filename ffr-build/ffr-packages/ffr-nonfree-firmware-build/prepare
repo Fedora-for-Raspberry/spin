@@ -1,0 +1,13 @@
+#!/bin/bash
+rm -fr videocore-firmware
+git clone --single-branch --depth 1 https://github.com/raspberrypi/firmware
+mkdir videocore-firmware
+cp firmware/boot/*.elf videocore-firmware
+cp firmware/boot/*.dat videocore-firmware
+cp firmware/boot/bootcode.bin videocore-firmware
+cp firmware/boot/COPYING.linux videocore-firmware
+cp firmware/boot/LICENCE.broadcom videocore-firmware
+rm -fr firmware
+mkdir -p ffr-nonfree-firmware/{root/boot,rpm}
+cp ../specs/ffr-nonfree-firmware.spec ./ffr-nonfree-firmware/
+echo rpi_$(date +%Y%m%d%H%M) > package-version

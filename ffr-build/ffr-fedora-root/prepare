@@ -1,0 +1,6 @@
+#!/bin/bash
+./clean
+cd ffr-image-fetch
+./install_fedora
+./image_fedora
+cd ..

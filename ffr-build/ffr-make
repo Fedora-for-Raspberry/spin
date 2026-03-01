@@ -1,0 +1,17 @@
+#!/bin/bash
+TARGETS="ffr-packages ffr-fedora-root ffr-sfs2img"
+for target in $TARGETS; do
+	echo "ffr-make: entering $target"
+	cd $target
+	./prepare
+	./build
+	./extra
+	cd ..
+done
+cp ffr-sfs2img/image.raw /root/image.raw
+for target in $TARGETS; do
+	echo "ffr-make: entering $target"
+        cd $target
+        ./clean
+        cd ..
+done

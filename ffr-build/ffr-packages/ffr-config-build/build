@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir -p ffr-config/root/boot
+cp config.txt ffr-config/root/boot/

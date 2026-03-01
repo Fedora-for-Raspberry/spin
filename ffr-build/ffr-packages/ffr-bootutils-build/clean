@@ -1,0 +1,6 @@
+#!/bin/sh
+rm -fr ffr-bootutils
+rm -fr scripts
+rm -fr rpms
+rm -fr *-version
+rm -fr sources/genfstab

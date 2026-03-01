@@ -1,0 +1,5 @@
+#!/bin/sh
+rm -fr ffr-rpi-eeprom
+rm -fr rpi-eeprom
+rm -fr rpms
+rm -fr *-version

@@ -1,0 +1,8 @@
+#!/bin/sh
+source ./include.sh
+rm -fr rpms
+for target in $TARGETS; do
+	cd $target
+	./clean
+	cd ..
+done

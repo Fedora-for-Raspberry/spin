@@ -1,0 +1,13 @@
+[Unit]
+Description=WLAN power save disable
+
+[Service]
+RemainAfterExit=yes
+Type=oneshot
+StandardOutput=journal
+StandardError=journal
+ExecStart=/sbin/ffr-brcmfixup
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

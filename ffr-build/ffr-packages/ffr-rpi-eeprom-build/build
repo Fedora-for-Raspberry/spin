@@ -1,0 +1,8 @@
+#!/bin/bash
+mkdir -p ffr-rpi-eeprom/{rpm,root}
+cd ffr-rpi-eeprom/root
+mkdir -p usr/{sbin,share/rpi-eeprom} etc/default
+cp -r ../../rpi-eeprom/tools/* ../../rpi-eeprom/rpi-eeprom-* usr/sbin/
+cp -r ../../rpi-eeprom/firmware-* usr/sbin/
+cp -r ../../rpi-eeprom/LICENSE usr/share/rpi-eeprom/
+echo 'FIRMWARE_RELEASE_STATUS="latest"' > etc/default/rpi-eeprom-update

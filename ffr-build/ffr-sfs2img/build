@@ -1,0 +1,19 @@
+#!/bin/bash
+rm -fr image.raw
+fallocate -l 16GB image.raw
+LOOPDEV=$(losetup --show -fP image.raw)
+parted $LOOPDEV < script.parted
+udevadm settle
+kpartx -auv $LOOPDEV
+mkfs.fat -F32 /dev/mapper/$(basename $LOOPDEV)p1
+mkfs.ext4 /dev/mapper/$(basename $LOOPDEV)p2
+udevadm settle
+mount /dev/mapper/$(basename $LOOPDEV)p2 /mnt/
+unsquashfs -d /mnt/ rootfs.sfs
+sync
+umount /mnt
+mount /dev/mapper/$(basename $LOOPDEV)p1 /mnt/
+unsquashfs -d /mnt/ bootfs.sfs
+umount /mnt
+losetup --detach $LOOPDEV
+sync

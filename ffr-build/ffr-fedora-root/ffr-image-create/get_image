@@ -1,0 +1,11 @@
+#!/bin/bash
+cp ../ffr-image-fetch/fedora.sfs .
+unsquashfs -d fedora fedora.sfs
+DNF5="dnf --installroot=$PWD/fedora --use-host-config --setopt=install_weak_deps=1 --releasever=$(cat ../ffr-image-fetch/fedora_release) -y"
+rm -fr fedora/boot/*
+yes | $DNF5 install ../../ffr-packages/rpms/*.rpm
+mkdir -p fedora/boot
+cd fedora/boot/
+mksquashfs . ../../bootfs.sfs
+cd ..
+mksquashfs . ../rootfs.sfs

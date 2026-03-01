@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -fr rpms
+rm -fr *-version
+rm -fr ffr-config

@@ -1,0 +1,15 @@
+[Unit]
+Description=First boot setup
+DefaultDependencies=no
+After=systemd-udevd.service systemd-udev-trigger.service systemd-vconsole-setup.service
+
+[Service]
+RemainAfterExit=yes
+Type=oneshot
+StandardOutput=journal
+StandardError=journal
+ExecStart=/sbin/ffr-firstboot
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

@@ -1,6 +1,6 @@
 #!/bin/bash
 mount -o remount,rw /
-BOOTDEV=/dev/`$(lsblk -no PKNAME '$(findmnt -rno SOURCE /)"`
+BOOTDEV=/dev/`lsblk -no PKNAME "$(findmnt -rno SOURCE /)"`
 BOOTPART=/dev/$(lsblk -Jno NAME,TYPE $BOOTDEV | jq -r ".blockdevices[0].children[0].name")
 ROOTPART=/dev/$(lsblk -Jno NAME,TYPE $BOOTDEV | jq -r ".blockdevices[0].children[1].name")
 UUID_BOOT=$(uuidgen | cut -d "-" -f1)

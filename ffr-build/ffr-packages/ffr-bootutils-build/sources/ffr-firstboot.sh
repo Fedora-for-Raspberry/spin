@@ -22,4 +22,6 @@ ffr-gencmdline | sed "s/ROOTSPEC/root=UUID=$UUID_ROOT/g" > /boot/cmdline.txt
 echo $UUID_BOOT > /boot/uuid_boot
 echo $UUID_ROOT > /boot/uuid_root
 systemctl mask ffr-firstboot.service
+systemctl enable sshd
+systemctl start sshd
 dracut -f

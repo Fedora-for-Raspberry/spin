@@ -19,6 +19,7 @@ Requires:	NetworkManager-wifi
 Requires:	NetworkManager-tui
 Requires:	iw
 Requires:	cloud-utils-growpart
+Requires:   openssh-server
 
 %global debug_package %{nil}
 

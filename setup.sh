@@ -1,5 +1,5 @@
 rm -fr image.raw
-CNAME=fedora-pi-builder-$RANDOM
+CNAME=fedora-pi-builder-ci
 docker rmi spin-pi-fedora-builder
 docker build -t spin-pi-fedora-builder .
 docker run -it --privileged=true --name $CNAME spin-pi-fedora-builder

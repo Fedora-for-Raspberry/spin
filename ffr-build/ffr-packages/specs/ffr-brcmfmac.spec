@@ -16,6 +16,7 @@ Requires:	brcmfmac-firmware
 Requires:	xz
 Requires:	findutils
 Requires:	NetworkManager
+Requires:   bluez
 
 %global debug_package %{nil}
 

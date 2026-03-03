@@ -1,5 +1,4 @@
 #!/bin/bash
 echo 43 > fedora_release
 DNF5="dnf --installroot=$PWD/rootfs_fedora --releasever=43 --use-host-config --setopt=install_weak_deps=1 -y"
-yes | $DNF5 group install core standard xfce-desktop
-
+yes | $DNF5 group install core standard kde-desktop-environment

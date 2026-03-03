@@ -1,4 +1,5 @@
 #!/bin/bash
+GIT_TERMINAL_PROMPT=0
 LATEST="$(git ls-remote https://github.com/raspberrypi/linux | grep -oE "rpi-[0-9].*?[.][0-9].*?[.]y" | sort -rV | head -n2 | tail -n1)"
 echo "env: $LATEST, cmd: $(git ls-remote https://github.com/raspberrypi/linux | grep -oE "rpi-[0-9].*?[.][0-9].*?[.]y" | sort -rV | head -n2 | tail -n1)"
 git clone --depth 1 --single-branch --branch "$LATEST" https://github.com/raspberrypi/linux "linux-$LATEST"

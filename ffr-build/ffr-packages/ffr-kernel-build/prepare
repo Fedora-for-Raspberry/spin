@@ -10,7 +10,7 @@ git checkout $(git branch -a --format="%(refname:short)" | grep -v "^origin" | s
 KVER="$(git branch | sed "s/-/_/g")"
 cd ..
 rm -fr "linux-$LATEST/.git" "linux-$LATEST/.github" "linux-$LATEST/.gitignore" "linux-$LATEST/.gitattributes"
-tar czvf "linux.tar.gz" "linux-$LATEST"
+tar czf "linux.tar.gz" "linux-$LATEST"
 echo "linux-$LATEST" > kernel-version
 echo linux_$KVER_$(date +%Y%m%d%H%M) > package-version
 mkdir rpms

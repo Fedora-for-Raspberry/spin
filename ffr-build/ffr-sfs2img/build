@@ -1,6 +1,6 @@
 #!/bin/bash
 rm -fr image.raw
-fallocate -l 16GB image.raw
+fallocate -l 12GB image.raw
 LOOPDEV=$(losetup --show -fP image.raw)
 parted $LOOPDEV < script.parted
 udevadm settle

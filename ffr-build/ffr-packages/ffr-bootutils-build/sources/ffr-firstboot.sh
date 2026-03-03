@@ -6,6 +6,7 @@ ROOTPART=/dev/$(lsblk -Jno NAME,TYPE $BOOTDEV | jq -r ".blockdevices[0].children
 UUID_BOOT=$(uuidgen | cut -d "-" -f1)
 UUID_ROOT=$(uuidgen)
 umount $BOOTPART
+umount $BOOTPART
 growpart $BOOTDEV 2
 resize2fs $ROOTPART
 sleep 3
@@ -15,6 +16,7 @@ echo "drive c: file=\"$BOOTPART\"" > /etc/mtools.conf
 mlabel -N $UUID_BOOT c:
 rm -fr /etc/mtools.conf
 mv /etc/mtools.conf.bak /etc/mtools.conf
+umount /boot
 umount /boot
 rm -fr /boot/*
 tune2fs -U $UUID_ROOT $ROOTPART

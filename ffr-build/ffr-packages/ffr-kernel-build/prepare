@@ -2,7 +2,7 @@
 GIT_TERMINAL_PROMPT=0
 git config --global user.name spin-ci
 LATEST="$(git ls-remote https://github.com/raspberrypi/linux | grep -oE "rpi-[0-9].*?[.][0-9].*?[.]y" | sort -rV | head -n2 | tail -n1)"
-echo "env: $LATEST, cmd: $(git ls-remote https://github.com/raspberrypi/linux | grep -oE "rpi-[0-9].*?[.][0-9].*?[.]y" | sort -rV | head -n2 | tail -n1)"
+GIT_TERMINAL_PROMPT=0 git ls-remote https://github.com/raspberrypi/linux | grep -oE "rpi-[0-9].*?[.][0-9].*?[.]y" | sort -rV | head -n2 | tail -n1
 git clone --depth 1 --single-branch --branch "$LATEST" https://github.com/raspberrypi/linux "linux-$LATEST"
 rm -fr "linux-$LATEST/.git" "linux-$LATEST/.github" "linux-$LATEST/.gitignore" "linux-$LATEST/.gitattributes"
 tar czvf "linux.tar.gz" "linux-$LATEST"

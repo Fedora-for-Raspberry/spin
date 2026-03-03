@@ -8,10 +8,10 @@ Run `sh setup.sh` to create the container and produce the build artifact (image.
 Run `sh setup-ghcr.sh` to download the container and produce the build artifact (image.raw).
 # Misc Information
 * Installer only installs ext4.
-* Bluetooth MAC address is the same with the ethernet MAC. (uses glob `e*0`, workaround bluez problem)
-* Plymouth is not enabled. (assuming bug in custom rpi kernel, not fixing)
+* Bluetooth MAC address is "aa:aa:aa:aa:aa:aa" (bluez problem, not fixing)
+* Plymouth is not enabled. (assuming bug in custom rpi kernel, testing)
 * GPU overlays are switched between Pi 4/5 (`-pi5`)
-* Uses stable versions of everything.
+* Uses stable versions of everything. (matching fedora and kernel, too)
 * GPU artifacting may happen in some GNOME terminals, use Alacritty for best performance.
 # Docker build environments
 You can obtain the container image by running: <br>

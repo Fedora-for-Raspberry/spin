@@ -15,6 +15,8 @@ echo "drive c: file=\"$BOOTPART\"" > /etc/mtools.conf
 mlabel -N $UUID_BOOT c:
 rm -fr /etc/mtools.conf
 mv /etc/mtools.conf.bak /etc/mtools.conf
+umount /boot
+rm -fr /boot/*
 tune2fs -U $UUID_ROOT $ROOTPART
 mount $BOOTPART /boot
 ffr-genfstab -p -U / | grep -A2 $BOOTDEV > /etc/fstab

@@ -1,2 +1,0 @@
-#!/bin/bash
-curl -s https://endoflife.date/api/fedora.json | jq -r '.[0].latest'

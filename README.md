@@ -12,3 +12,6 @@ Run `sh setup.sh` to create the container and produce the build artifact (image.
 * GPU overlays are switched between Pi 4/5 (`-pi5`)
 * Uses stable versions of everything.
 * GPU artifacting may happen in some GNOME terminals, use Alacritty for best performance.
+# Docker build environments
+You can obtain the container image by running: <br>
+`docker pull --platform linux/amd64 ghcr.io/fedora-for-raspberry/spin`

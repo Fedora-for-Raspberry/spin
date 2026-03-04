@@ -1,6 +1,5 @@
 [Unit]
 Description=First boot setup
-DefaultDependencies=no
 After=systemd-udevd.service systemd-udev-trigger.service systemd-vconsole-setup.service local-fs.target
 
 [Service]
@@ -13,6 +12,9 @@ SendSIGKILL=no
 TimeoutStartSec=infinity
 TimeoutStopSec=infinity
 TimeoutSec=infinity
+TimeoutStartUSec=infinity
+TimeoutStopUSec=infinity
+TimeoutUSec=infinity
 
 [Install]
 WantedBy=multi-user.target

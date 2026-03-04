@@ -1,5 +1,0 @@
-#!/bin/bash
-cd /root/
-mv ffr-build/* .
-rm -fr ffr-build
-./ffr-prep

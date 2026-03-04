@@ -3,6 +3,7 @@ TARGETS="ffr-packages ffr-fedora-root ffr-sfs2img"
 for target in $TARGETS; do
 	echo "ffr-make: entering $target"
 	cd $target
+	./prepare
 	./build
 	./extra
 	cd ..

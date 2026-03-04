@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /root/
-./prep
+mv ffr-build/* .
 ./ffr-make

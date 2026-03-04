@@ -10,6 +10,7 @@ StandardOutput=journal
 StandardError=journal
 ExecStart=/sbin/ffr-firstboot
 SendSIGKILL=no
+TimeoutStartSec=3600
 TimeoutSec=3600
 
 [Install]

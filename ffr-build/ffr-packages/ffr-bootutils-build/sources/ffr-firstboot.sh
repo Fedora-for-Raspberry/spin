@@ -30,5 +30,7 @@ firstboot() {
     systemctl enable sshd
     systemctl start sshd
     dracut -f
+    systemctl enable gdm
+    systemctl reboot
 }
 firstboot &

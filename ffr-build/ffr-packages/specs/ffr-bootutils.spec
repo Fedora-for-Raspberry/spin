@@ -20,6 +20,7 @@ Requires:	NetworkManager-tui
 Requires:	iw
 Requires:	cloud-utils-growpart
 Requires:   openssh-server
+Requires:   gdm
 
 %global debug_package %{nil}
 
@@ -46,3 +47,4 @@ systemctl mask network-online.target
 systemctl mask rfkill.socket
 iw reg set US
 systemctl enable ffr-firstboot.service
+systemctl disable gdm

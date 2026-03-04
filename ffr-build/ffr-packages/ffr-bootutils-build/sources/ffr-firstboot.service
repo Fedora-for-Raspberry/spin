@@ -10,8 +10,9 @@ StandardOutput=journal
 StandardError=journal
 ExecStart=/sbin/ffr-firstboot
 SendSIGKILL=no
-TimeoutStartSec=3600
-TimeoutSec=3600
+TimeoutStartSec=infinity
+TimeoutStopSec=infinity
+TimeoutSec=infinity
 
 [Install]
 WantedBy=multi-user.target

@@ -31,6 +31,7 @@ firstboot() {
     systemctl start sshd
     dracut -f
     systemctl enable gdm
+    tune2fs -c 1 $ROOTPART
     systemctl reboot
 }
 firstboot &

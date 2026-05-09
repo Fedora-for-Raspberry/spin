@@ -1,5 +1,6 @@
 #!/bin/bash
 echo 44 > fedora_release
-DNF5="dnf --installroot=$PWD/rootfs_fedora --releasever=43 --use-host-config --setopt=install_weak_deps=1 -y"
-yes | $DNF5 group install core standard workstation-product-environment 
+DNF5="dnf --installroot=$PWD/rootfs_fedora --releasever=44 --use-host-config --setopt=install_weak_deps=1 -y"
+yes | $DNF5 group install core standard
+# workstation-product-environment disabled for testing
 # kde-desktop-environment for KDE requires user setup.
